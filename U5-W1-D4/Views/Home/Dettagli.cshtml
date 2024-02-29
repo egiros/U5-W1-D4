@@ -4,63 +4,26 @@
     ViewBag.Title = "Dettagli";
 }
 
+<span class="fs-6">@Html.ActionLink("Indietro", "Index")</span>
+
 <h2>Dettagli</h2>
 
 <div>
     <h4>Articoli</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Nome)
-        </dt>
+    <div class="row">
+        <div class="col-6">
+            <img src="@Model.ImmagineCopertina" alt="product-image" style="width: 300px">
+            <img src="@Model.ImmagineAggiuntiva1" alt="product-image" style="width: 300px">
+            <img src="@Model.ImmagineAggiuntiva2" alt="product-image" style="width: 300px">
+        </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Nome)
-        </dd>
+        <div class="col-6">
+            <h3>@Model.Nome</h3>
+            <p>@Model.Descrizione</p>
+            <p>@Model.Prezzo</p>
+        </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Prezzo)
-        </dt>
+    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Prezzo)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Descrizione)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Descrizione)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ImmagineCopertina)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ImmagineCopertina)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ImmagineAggiuntiva1)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ImmagineAggiuntiva1)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ImmagineAggiuntiva2)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ImmagineAggiuntiva2)
-        </dd>
-
-    </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

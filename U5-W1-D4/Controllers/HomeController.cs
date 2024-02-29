@@ -205,6 +205,72 @@ namespace U5_W1_D4.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult AddProd(int id)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["MyDb"].ConnectionString.ToString();
+            SqlConnection conn = new SqlConnection(connectionString);
+
+            try
+            {   
+                conn.Open();
+                string query = "UPDATE Articoli SET Visibile = 1 WHERE Id = " + id;
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+             }
+            return RedirectToAction("Gestione");
+        }
+
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+
+        public ActionResult Login(Utenti utente)
+        {
+
+            List<Utenti> utenti = new List<Utenti>()
+            {
+                new Utenti { ID = 1, Nome = "admin", Password = "admin", Admin = true },
+                new Utenti { ID = 2, Nome = "user", Password = "user", Admin = false }
+            };
+
+            var utenteLoggato = utenti.FirstOrDefault(u => u.Nome == utente.Nome && u.Password == utente.Password);
+
+            if (utenteLoggato != null)
+            {
+                Session["UtenteLoggato"] = utenteLoggato;
+                if (utenteLoggato.Admin)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+            else
+            {
+                ViewBag.Error = "Nome utente o password errati!";
+                return View("Index");
+            }
+        }
+
+        public ActionResult Logout()
+        {
+            Session["UtenteLoggato"] = null;
+            return RedirectToAction("Index", "Home");
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

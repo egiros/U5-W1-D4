@@ -192,6 +192,7 @@
     <Content Include="Views\Home\DeleteArticolo.cshtml" />
     <Content Include="Views\Home\AggiungiArticolo.cshtml" />
     <Content Include="Views\Home\Gestione.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

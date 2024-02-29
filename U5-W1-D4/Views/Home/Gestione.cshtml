@@ -4,10 +4,10 @@
     ViewBag.Title = "Gestione";
 }
 
-<h2>Gestione</h2>
+<h2 class="text-center">Gestione</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Aggiungi prodotto", "AggiungiArticolo", new { }, new { @class = "btn btn-success" })
 </p>
 <table class="table">
     <tr>
@@ -38,30 +38,36 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Nome)
+            <h2 class="fs-5">@item.Nome</h2>
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Prezzo)
+            <p style="width: 250px">@item.Descrizione</p>
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Descrizione)
+            <p>@item.Prezzo €</p>
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ImmagineCopertina)
+            <img src=".@item.ImmagineCopertina" alt="img1" style="width: 150px" />
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ImmagineAggiuntiva1)
+            <img src=".@item.ImmagineAggiuntiva1" alt="img2" style="width: 150px" />
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ImmagineAggiuntiva2)
+            <img src=".@item.ImmagineAggiuntiva2" alt="img3" style="width: 150px" />
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Visibile)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Modifica", "EditProd", new { id = item.Id }, new { @class = "btn btn-primary mb-2" })
+            @if (item.Visibile == false)
+            {
+                @Html.ActionLink("Mostra", "AddProd", new { id = item.Id }, new { @class = "btn btn-success" })
+            }
+            else
+            {
+                @Html.ActionLink("Rimuovi", "DeleteProd", new { id = item.Id }, new { @class = "btn btn-warning" })
+            }
         </td>
     </tr>
 }
