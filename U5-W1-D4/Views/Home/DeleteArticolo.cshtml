@@ -1,0 +1,72 @@
+﻿@model U5_W1_D4.Models.Articoli
+
+@{
+    ViewBag.Title = "DeleteArticolo";
+}
+
+<h2>DeleteArticolo</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Articoli</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Prezzo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Prezzo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descrizione)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descrizione)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImmagineCopertina)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ImmagineCopertina)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImmagineAggiuntiva1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ImmagineAggiuntiva1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImmagineAggiuntiva2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ImmagineAggiuntiva2)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
